@@ -6,6 +6,8 @@ package ine5646;
 
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,7 +16,7 @@ import javax.ejb.LocalBean;
 @Stateless
 @LocalBean
 public class NewSessionBean {
-
+    
     public void businessMethod() {
     }
 
