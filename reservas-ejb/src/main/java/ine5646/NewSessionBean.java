@@ -15,11 +15,11 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @LocalBean
-public class NewSessionBean {
+public class NewSessionBean implements INewSessionBean{
     
-    public void businessMethod() {
-    }
-
+    @PersistenceContext
+    private EntityManager em;
+   
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
