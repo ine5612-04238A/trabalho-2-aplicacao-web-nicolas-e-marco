@@ -13,9 +13,9 @@
            <p>Senha: <h:inputText value="#{Manager.senha}"/></p>
            <p>Email: <h:inputText value="#{Manager.email}"/></p>
                 <p>Tipo de Usuário: <h:selectOneMenu value = "#{Manager.tipoUsuario}"> 
-                                        <f:selectItem itemValue = "1" itemLabel = "Cliente" /> 
-                                        <f:selectItem itemValue = "2" itemLabel = "Funcionario" /> 
-                    </h:selectOneMenu>        
+                                        <f:selectItem itemValue = "Cliente" itemLabel = "Cliente" /> 
+                                        <f:selectItem itemValue = "Funcionario" itemLabel = "Funcionario" /> 
+                    </h:selectOneMenu>        </p> 
            <h:commandButton value="Gravar" action="#{Manager.gravarNovoUsuario}"/>
            <h:messages style="color:red"/>
         </h:form>
