@@ -28,4 +28,9 @@ public class EJB implements EJBLocal {
     public Usuario buscar(String nome){
         return this.em.find(Usuario.class, nome);
     }
+
+    @Override
+    public void gravarViagem(ViagemOnibus viagem) {
+        this.em.persist(viagem);
+    }
 }

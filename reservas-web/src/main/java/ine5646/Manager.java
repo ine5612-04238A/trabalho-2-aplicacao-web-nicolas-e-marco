@@ -52,15 +52,33 @@ public class Manager implements Serializable{
     }
  
     public String gravarNovoUsuario() {
-        if (this.tipoUsuario.equals("Funcionario")) {
-            Funcionario usuario = new Funcionario (this.nome, this.email, this.senha, "Funcionario");
-            this.ejb.gravar(usuario);
-        } else {
+      if(this.ejb.buscar(this.nome)!=null){
+        if (!this.ejb.buscar(this.nome).getEmail().equals(this.email)){
+             if (this.tipoUsuario.equals("Funcionario")) {
+                 Funcionario usuario = new Funcionario (this.nome, this.email, this.senha, "Funcionario");
+                 this.ejb.gravar(usuario);
+             }else {
+                 Cliente usuario = new Cliente (this.nome, this.email, this.senha, "Cliente");
+                 this.ejb.gravar(usuario);
+        }
+        return "index.xhtml"; 
+        }
+            FacesMessage msg = new FacesMessage("Email já cadastrado!");
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
+            return null;
+    }
+      else{
+         
+             if (this.tipoUsuario.equals("Funcionario")) {
+                 Funcionario usuario = new Funcionario (this.nome, this.email, this.senha, "Funcionario");
+                 this.ejb.gravar(usuario);
+             } else {
             Cliente usuario = new Cliente (this.nome, this.email, this.senha, "Cliente");
             this.ejb.gravar(usuario);
         }
         return "index.xhtml"; 
-    }
+          
+      }}
     
     public String autenticarLogin() {
         if(this.ejb.buscar(this.nome)!=null){
@@ -74,7 +92,6 @@ public class Manager implements Serializable{
         } 
         else {
             FacesMessage msg = new FacesMessage("Usuário ou senha inválido!");
-         /* Obtém a instancia atual do FacesContext e adiciona a mensagem de erro nele. */
             FacesContext.getCurrentInstance().addMessage("erro", msg);
             return null;
         }
