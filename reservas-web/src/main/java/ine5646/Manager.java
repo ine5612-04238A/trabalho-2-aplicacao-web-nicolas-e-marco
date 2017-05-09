@@ -2,9 +2,10 @@ package ine5646;
 
 import javax.ejb.EJB;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @RequestScoped
@@ -62,11 +63,23 @@ public class Manager implements Serializable{
     }
     
     public String autenticarLogin() {
+        if(this.ejb.buscar(this.nome)!=null){
         if (this.ejb.buscar(this.nome).getSenha() != this.senha) {
-            return "vish, deu ruim, usuário ou senha incorretos ";
-        } else {
-            return "dale, porra, é treze! ";
+            if(this.ejb.buscar(this.nome).getTipoUsuario()=="Funcionario"){
+                return "TelaFuncionario.xhtml";
+            }else{
+                return "TelaCliente.xhtml";
+            }
         }
+        } 
+        else {
+            FacesMessage msg = new FacesMessage("Usuário ou senha inválido!");
+         /* Obtém a instancia atual do FacesContext e adiciona a mensagem de erro nele. */
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
+            return null;
+        }
+        return null;
+        
     }
     
 }

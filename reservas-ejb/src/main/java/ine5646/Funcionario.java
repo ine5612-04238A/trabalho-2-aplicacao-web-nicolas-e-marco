@@ -20,6 +20,9 @@ public class Funcionario extends Usuario {
     public Funcionario(String nome, String email, String senha, String tipoUsuario) {
         super(nome, email, senha, tipoUsuario);
     }
+
+    public Funcionario() {
+    }
    
     
 }

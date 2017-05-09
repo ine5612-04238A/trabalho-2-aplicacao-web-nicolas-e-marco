@@ -22,5 +22,9 @@ public class Cliente extends Usuario {
         super(nome, email, senha, tipoUsuario);
     }
 
+    public Cliente() {
+    }
+    
+
     
 }
