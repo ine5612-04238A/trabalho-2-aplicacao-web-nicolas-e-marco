@@ -8,9 +8,9 @@
     <h:body>   
         <h1>LOGIN</h1>
         <h:form>
-           <p>Email: <h:inputText value="#{Manager.nome}"/></p>
-           <p>Senha: <h:inputText value="#{Manager.senha}"/></p>
-           <h:commandButton value="Autenticar" action="#{Manager.autenticarLogin}"/>
+           <p>Email: <h:inputText value="#{manager.nome}"/></p>
+           <p>Senha: <h:inputText value="#{manager.senha}"/></p>
+           <h:commandButton value="Autenticar" action="#{manager.autenticarLogin}"/>
            <h:messages style="color:red"/>
         </h:form>
         <h:link value="Cadastrar Usuario" outcome="cadastrar.xhtml"/><br/>

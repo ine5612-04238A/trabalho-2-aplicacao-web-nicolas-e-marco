@@ -9,14 +9,14 @@
     <h:body>
         <h1>Preencha os campos abaixo</h1>
         <h:form>
-           <p>Nome: <h:inputText value="#{Manager.nome}"/></p>
-           <p>Senha: <h:inputText value="#{Manager.senha}"/></p>
-           <p>Email: <h:inputText value="#{Manager.email}"/></p>
-                <p>Tipo de Usuário: <h:selectOneMenu value = "#{Manager.tipoUsuario}"> 
+           <p>Nome: <h:inputText value="#{manager.nome}"/></p>
+           <p>Senha: <h:inputText value="#{manager.senha}"/></p>
+           <p>Email: <h:inputText value="#{manager.email}"/></p>
+                <p>Tipo de Usuário: <h:selectOneMenu value = "#{manager.tipoUsuario}"> 
                                         <f:selectItem itemValue = "Cliente" itemLabel = "Cliente" /> 
                                         <f:selectItem itemValue = "Funcionario" itemLabel = "Funcionario" /> 
                     </h:selectOneMenu>        </p> 
-           <h:commandButton value="Gravar" action="#{Manager.gravarNovoUsuario}"/>
+           <h:commandButton value="Gravar" action="#{manager.gravarNovoUsuario}"/>
            <h:messages style="color:red"/>
         </h:form>
     </h:body>
