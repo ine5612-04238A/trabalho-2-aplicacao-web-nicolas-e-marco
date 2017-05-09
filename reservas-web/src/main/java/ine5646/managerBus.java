@@ -7,9 +7,10 @@ package ine5646;
 
 import javax.ejb.EJB;
 import java.io.Serializable;
-import java.util.Date;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -20,10 +21,10 @@ import javax.faces.bean.RequestScoped;
 public class managerBus implements Serializable{
 
     
-   @javax.ejb.EJB
+    @EJB
     protected EJBLocal ejb;
     
-    protected String data;
+    protected String dataViagem;
     protected String horario;
     protected String cidadeDestino;
     protected String cidadeOrigem;
@@ -39,12 +40,12 @@ public class managerBus implements Serializable{
         this.ejb = ejb;
     }
 
-    public String getData() {
-        return data;
+    public String getDataViagem() {
+        return dataViagem;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataViagem(String dataViagem) {
+        this.dataViagem = dataViagem;
     }
 
     public String getHorario() {
@@ -87,9 +88,10 @@ public class managerBus implements Serializable{
         this.numReservas = numReservas;
     }
     
-     public String gravarNovaViagem() {
-            ViagemOnibus viagem = new ViagemOnibus (this.data, this.horario, this.cidadeDestino, this.cidadeOrigem, this.valor, this.numReservas);
+     public void gravarNovaViagem() {
+            ViagemOnibus viagem = new ViagemOnibus (this.dataViagem, this.horario, this.cidadeDestino, this.cidadeOrigem, this.valor, this.numReservas);
             this.ejb.gravarViagem(viagem);
-            return "TelaFuncionario.xhtml"; 
+            FacesMessage msg = new FacesMessage("Cadastro Sucedido");
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
 }
 }

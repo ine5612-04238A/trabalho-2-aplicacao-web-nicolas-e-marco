@@ -5,12 +5,19 @@
  */
 package ine5646;
 
-/**
- *
- * @author HOME
- */
-public class ViagemOnibus {
-    protected String data;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
+public class ViagemOnibus implements Serializable {    
+
+
+    @Id
+    protected String dataViagem;
     protected String horario;
     protected String cidadeDestino;
     protected String cidadeOrigem;
@@ -18,7 +25,7 @@ public class ViagemOnibus {
     protected int numReservas;
 
     public ViagemOnibus(String data, String horario, String cidadeDestino, String cidadeOrigem, int valor, int numReservas) {
-        this.data = data;
+        this.dataViagem = data;
         this.horario = horario;
         this.cidadeDestino = cidadeDestino;
         this.cidadeOrigem = cidadeOrigem;
@@ -29,12 +36,12 @@ public class ViagemOnibus {
     public ViagemOnibus() {
     }
 
-    public String getData() {
-        return data;
+    public String getDataViagem() {
+        return dataViagem;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataViagem(String dataViagem) {
+        this.dataViagem = dataViagem;
     }
 
     public String getHorario() {

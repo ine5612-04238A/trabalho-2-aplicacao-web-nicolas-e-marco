@@ -11,10 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author martin
- */
+
 @Entity
 public class Usuario implements Serializable {
     @Id

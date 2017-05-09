@@ -6,14 +6,16 @@
         <title>Cadastro Viagem</title>
     </h:head>
     <h:body>
+        <h1>Preencha os campos abaixo</h1>
          <h:form>
-           <p>       Data:        <h:inputText value="#{managerBus.data}"/></p>
+           <p>       Data:        <h:inputText value="#{managerBus.dataViagem}"/></p>
            <p>      Horário:      <h:inputText value="#{managerBus.horario}"/></p>
            <p> Cidade de Destino: <h:inputText value="#{managerBus.cidadeDestino}"/></p>
            <p>  Cidade de Origem: <h:inputText value="#{managerBus.cidadeOrigem}"/></p>
            <p> Valor da Passagem: <h:inputText value="#{managerBus.valor}"/></p>
            <p>Reservas disponíveis: <h:inputText value="#{managerBus.numReservas}"/></p>
            <h:commandButton value="Cadastrar Onibus" action="#{managerBus.gravarNovaViagem}"/>
+           <h:link value="Voltar" outcome="TelaFuncionario.xhtml"/>
            <h:messages style="color:red"/>
          </h:form> 
     </h:body>
