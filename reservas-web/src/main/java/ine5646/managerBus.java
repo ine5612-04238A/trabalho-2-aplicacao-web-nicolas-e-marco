@@ -7,6 +7,7 @@ package ine5646;
 
 import javax.ejb.EJB;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -93,5 +94,8 @@ public class managerBus implements Serializable{
             this.ejb.gravarViagem(viagem);
             FacesMessage msg = new FacesMessage("Cadastro Sucedido");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
+}
+     public List<ViagemOnibus> listarViagens() {
+            return this.ejb.retornarListaViagens();
 }
 }

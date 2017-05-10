@@ -5,6 +5,7 @@
  */
 package ine5646;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,5 +33,9 @@ public class EJB implements EJBLocal {
     @Override
     public void gravarViagem(ViagemOnibus viagem) {
         this.em.persist(viagem);
+    }
+    
+    public List<ViagemOnibus> retornarListaViagens() {
+        return this.em.createNamedQuery("Viagens.findAll").getResultList();
     }
 }

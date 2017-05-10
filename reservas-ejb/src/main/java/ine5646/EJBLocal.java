@@ -5,6 +5,7 @@
  */
 package ine5646;
 
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -16,4 +17,5 @@ public interface EJBLocal {
     public void gravar(Usuario usuario);
     public Usuario buscar(String nome);
     public void gravarViagem (ViagemOnibus viagem);
+    public List<ViagemOnibus> retornarListaViagens();
 }

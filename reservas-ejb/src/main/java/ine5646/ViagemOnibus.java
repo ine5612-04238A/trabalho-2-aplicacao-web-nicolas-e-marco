@@ -10,9 +10,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Viagens.findAll",
+            query = "SELECT v FROM ViagemOnibus v")
+})
+
 public class ViagemOnibus implements Serializable {    
 
 
