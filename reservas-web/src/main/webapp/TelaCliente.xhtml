@@ -10,21 +10,34 @@
     <h:body>
         <h:dataTable var="viagens" value="#{managerBus.listarViagens()}">
             <h:column>
-                <f:facet name="dataViagem"><h:outputText value="Data da Viagem"/></f:facet>
+                <f:facet name="header"><h:outputText value="Data da Viagem"/></f:facet>
     		#{viagens.dataViagem}
     	    </h:column>
             <h:column>
-                <f:facet name="horario"><h:outputText value="Horário"/></f:facet>
+                <f:facet name="header">Horário</f:facet>
     		#{viagens.horario}  
     	    </h:column>
             <h:column>
-                <f:facet name="cidadeDestino"><h:outputText value="Cidade"/></f:facet>
+                <f:facet name="header"><h:outputText value="Cidade"/></f:facet>
     		#{viagens.cidadeDestino}  
     	    </h:column>
             <h:column>
-                <f:facet name="cidadeOrigem"><h:outputText value="Cidade Origem"/></f:facet>
+                <f:facet name="header"><h:outputText value="Cidade Origem"/></f:facet>
     		#{viagens.cidadeOrigem}  
     	    </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Valor"/></f:facet>
+    		#{viagens.valor}  
+    	    </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Reservas"/></f:facet>
+    		#{viagens.numReservas}  
+    	    </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Reservar!"/></f:facet>
+                    <h:commandButton value="reservar para " type="submit" action=""/> 
+    	    </h:column>
+            
         </h:dataTable>
         <h:link value="Voltar" outcome="index.xhtml"/>
     </h:body>
