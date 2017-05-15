@@ -19,7 +19,7 @@ public class EJB implements EJBLocal {
 
     @PersistenceContext
     private EntityManager em;
-    
+   
     @Override
     public void gravar(Usuario usuario){
         this.em.persist(usuario);
@@ -37,5 +37,10 @@ public class EJB implements EJBLocal {
     
     public List<ViagemOnibus> retornarListaViagens() {
         return this.em.createNamedQuery("Viagens.findAll").getResultList();
+    }
+
+    @Override
+    public ViagemOnibus buscar(int id) {
+        return this.em.find(ViagemOnibus.class, id);
     }
 }

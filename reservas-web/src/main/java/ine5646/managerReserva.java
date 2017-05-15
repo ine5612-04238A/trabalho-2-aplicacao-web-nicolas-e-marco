@@ -30,7 +30,17 @@ public class managerReserva implements Serializable{
     public EJBLocal getEjb() {
         return ejb;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public void reservar(){
+        this.ejb.buscar(id).setNumReservas(this.ejb.buscar(id).getNumReservas()-1);
+        //this.ejb.gravarViagem(this.ejb.buscar(id));
     }
 }

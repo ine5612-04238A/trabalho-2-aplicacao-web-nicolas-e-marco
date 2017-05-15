@@ -25,13 +25,14 @@ public class ViagemOnibus implements Serializable {
 
 
     @Id
+    protected int id;
     protected String dataViagem;
     protected String horario;
     protected String cidadeDestino;
     protected String cidadeOrigem;
     protected int valor;
     protected int numReservas;
-    protected int id;
+    
 
     public ViagemOnibus(String data, String horario, String cidadeDestino, String cidadeOrigem, int valor, int numReservas, int id) {      
         this.dataViagem = data;
@@ -41,7 +42,7 @@ public class ViagemOnibus implements Serializable {
         this.valor = valor;
         this.numReservas = numReservas;
         Random gerador = new Random();  
-        this.id = gerador.nextInt(100);
+        this.id = gerador.nextInt(1000);
     }
 
     public ViagemOnibus() {

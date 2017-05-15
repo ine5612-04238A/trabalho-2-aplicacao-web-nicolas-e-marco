@@ -18,4 +18,5 @@ public interface EJBLocal {
     public Usuario buscar(String nome);
     public void gravarViagem (ViagemOnibus viagem);
     public List<ViagemOnibus> retornarListaViagens();
+    public ViagemOnibus buscar(int id);
 }
