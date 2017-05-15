@@ -9,6 +9,10 @@
     <h:body>
         <h:dataTable var="viagens" value="#{managerBus.listarViagens()}">
             <h:column>
+                <f:facet name="header"><h:outputText value="Código"/></f:facet>
+    		#{viagens.id}
+    	    </h:column>
+            <h:column>
                 <f:facet name="header"><h:outputText value="Data da Viagem"/></f:facet>
     		#{viagens.dataViagem}
     	    </h:column>

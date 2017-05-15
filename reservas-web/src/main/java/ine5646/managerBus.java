@@ -31,6 +31,7 @@ public class managerBus implements Serializable{
     protected String cidadeOrigem;
     protected int valor;
     protected int numReservas;
+    protected int id;
 
    
     public EJBLocal getEjb() {
@@ -59,6 +60,14 @@ public class managerBus implements Serializable{
 
     public String getCidadeDestino() {
         return cidadeDestino;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCidadeDestino(String cidadeDestino) {
@@ -90,9 +99,9 @@ public class managerBus implements Serializable{
     }
     
      public void gravarNovaViagem() {
-            ViagemOnibus viagem = new ViagemOnibus (this.dataViagem, this.horario, this.cidadeDestino, this.cidadeOrigem, this.valor, this.numReservas);
+            ViagemOnibus viagem = new ViagemOnibus (this.dataViagem, this.horario, this.cidadeDestino, this.cidadeOrigem, this.valor, this.numReservas, this.id);
             this.ejb.gravarViagem(viagem);
-            FacesMessage msg = new FacesMessage("Cadastro Sucedido");
+            FacesMessage msg = new FacesMessage("Cadastro com sucesso");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
 }
      public List<ViagemOnibus> listarViagens() {

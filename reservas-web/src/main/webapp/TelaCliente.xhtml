@@ -9,6 +9,10 @@
     </h:head>
     <h:body>
         <h:dataTable var="viagens" value="#{managerBus.listarViagens()}">
+             <h:column>
+                <f:facet name="header"><h:outputText value="Código"/></f:facet>
+    		#{viagens.id}
+    	    </h:column>
             <h:column>
                 <f:facet name="header"><h:outputText value="Data da Viagem"/></f:facet>
     		#{viagens.dataViagem}
@@ -33,12 +37,10 @@
                 <f:facet name="header"><h:outputText value="Reservas"/></f:facet>
     		#{viagens.numReservas}  
     	    </h:column>
-            <h:column>
-                <f:facet name="header"><h:outputText value="Reservar!"/></f:facet>
-                    <h:commandButton value="reservar para " type="submit" action=""/> 
-    	    </h:column>
             
         </h:dataTable>
+        <h:link value="Reservar passagem de onibus" outcome="TelaReservarOnibus.xhtml"/><br/>
+        <h:link value="Reservas do Usuário" outcome="TelaReservasUsuario.xhtml"/><br/>
         <h:link value="Voltar" outcome="index.xhtml"/>
     </h:body>
 </html>

@@ -6,6 +6,7 @@
 package ine5646;
 
 import java.io.Serializable;
+import java.util.Random;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,17 +31,28 @@ public class ViagemOnibus implements Serializable {
     protected String cidadeOrigem;
     protected int valor;
     protected int numReservas;
+    protected int id;
 
-    public ViagemOnibus(String data, String horario, String cidadeDestino, String cidadeOrigem, int valor, int numReservas) {
+    public ViagemOnibus(String data, String horario, String cidadeDestino, String cidadeOrigem, int valor, int numReservas, int id) {      
         this.dataViagem = data;
         this.horario = horario;
         this.cidadeDestino = cidadeDestino;
         this.cidadeOrigem = cidadeOrigem;
         this.valor = valor;
         this.numReservas = numReservas;
+        Random gerador = new Random();  
+        this.id = gerador.nextInt(100);
     }
 
     public ViagemOnibus() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDataViagem() {

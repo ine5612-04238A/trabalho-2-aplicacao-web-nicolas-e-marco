@@ -17,12 +17,23 @@ import javax.persistence.Id;
  */
 @Entity
 public class Cliente extends Usuario {
-
+    
+    protected int codigoReserva;
+    
     public Cliente(String nome, String email, String senha, String tipoUsuario) {
         super(nome, email, senha, tipoUsuario);
     }
 
     public Cliente() {
+    }
+
+    public Cliente(int codigoReserva, String nome, String email, String senha, String tipoUsuario) {
+        super(nome, email, senha, tipoUsuario);
+        this.codigoReserva = codigoReserva;
+    }
+
+    public Cliente(int codigoReserva) {
+        this.codigoReserva = codigoReserva;
     }
     
 
