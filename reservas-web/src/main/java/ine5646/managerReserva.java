@@ -40,7 +40,6 @@ public class managerReserva implements Serializable{
     }
     
     public void reservar(){
-        this.ejb.buscar(id).setNumReservas(this.ejb.buscar(id).getNumReservas()-1);
-        //this.ejb.gravarViagem(this.ejb.buscar(id));
+        this.ejb.updateReserva(id);
     }
 }

@@ -19,4 +19,5 @@ public interface EJBLocal {
     public void gravarViagem (ViagemOnibus viagem);
     public List<ViagemOnibus> retornarListaViagens();
     public ViagemOnibus buscar(int id);
-}
+    public void updateReserva(int id);    
+    }
