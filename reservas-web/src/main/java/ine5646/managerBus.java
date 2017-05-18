@@ -101,7 +101,7 @@ public class managerBus implements Serializable{
      public void gravarNovaViagem() {
             ViagemOnibus viagem = new ViagemOnibus (this.dataViagem, this.horario, this.cidadeDestino, this.cidadeOrigem, this.valor, this.numReservas, this.id);
             this.ejb.gravarViagem(viagem);
-            FacesMessage msg = new FacesMessage("Cadastro com sucesso");
+            FacesMessage msg = new FacesMessage("Cadastrado com sucesso");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
 }
      public List<ViagemOnibus> listarViagens() {

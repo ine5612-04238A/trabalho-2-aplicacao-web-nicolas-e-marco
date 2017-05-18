@@ -8,7 +8,7 @@
     <h:body>   
         <h1>LOGIN</h1>
         <h:form>
-           <p>Email: <h:inputText value="#{manager.nome}" required="true"/></p>
+           <p>Email: <h:inputText value="#{manager.email}" required="true"/></p>
            <p>Senha: <h:inputText value="#{manager.senha}" required="true"/></p>
            <h:commandButton value="Autenticar" action= "#{manager.autenticarLogin}" />
            <h:messages id="msgErro" style="color: red"/>

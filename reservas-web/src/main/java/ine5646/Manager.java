@@ -52,20 +52,23 @@ public class Manager implements Serializable{
     }
  
     public String gravarNovoUsuario() {
-      if(this.ejb.buscar(this.nome)!=null){
-        if (!this.ejb.buscar(this.nome).getEmail().equals(this.email)){
+      if(this.ejb.buscarEmail(this.email)!=null){
+        if (!this.ejb.buscarEmail(this.email).getEmail().equals(this.email)){
              if (this.tipoUsuario.equals("Funcionario")) {
                  Funcionario usuario = new Funcionario (this.nome, this.email, this.senha, "Funcionario");
                  this.ejb.gravar(usuario);
              }else {
                  Cliente usuario = new Cliente (this.nome, this.email, this.senha, "Cliente");
                  this.ejb.gravar(usuario);
-        }
+            }
         return "index.xhtml"; 
         }
+        
+        else{
             FacesMessage msg = new FacesMessage("Email já cadastrado!");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
             return null;
+        }
     }
       else{
          
@@ -78,25 +81,23 @@ public class Manager implements Serializable{
         }
         return "index.xhtml"; 
           
-      }}
+      }
+ 
+    }
     
     public String autenticarLogin() {
-        if(this.ejb.buscar(this.nome)!=null){
-        if (this.ejb.buscar(this.nome).getSenha() != this.senha) {
-            if(this.ejb.buscar(this.nome).getTipoUsuario()=="Funcionario"){
-                return "TelaFuncionario.xhtml";
-            }else{
-                return "TelaCliente.xhtml";
-            }
-        }
+        if(this.ejb.buscarEmail(this.email)!=null){
+            if(this.ejb.buscarEmail(this.email).getSenha().equals(this.senha) && this.ejb.buscarEmail(this.email).getEmail().equals(this.email) ) {
+                if(this.ejb.buscarEmail(this.email).getTipoUsuario()=="Funcionario"){
+                      return "TelaFuncionario.xhtml";
+              }else{
+                   return "TelaCliente.xhtml";
+              }
+        }   
         } 
-        else {
             FacesMessage msg = new FacesMessage("Usuário ou senha inválido!");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
             return null;
-        }
-        return null;
-        
     }
     
 }

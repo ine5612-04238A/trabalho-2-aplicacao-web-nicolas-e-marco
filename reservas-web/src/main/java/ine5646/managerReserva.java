@@ -40,6 +40,15 @@ public class managerReserva implements Serializable{
     }
     
     public void reservar(){
-        this.ejb.updateReserva(id);
+        if(this.ejb.verificarViagem(id)){
+            this.ejb.updateReserva(id);
+            FacesMessage msg = new FacesMessage("Reserva feita");
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
+        }
+        else{
+            FacesMessage msg = new FacesMessage("Reserva não cadastrada");
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
+        }
     }
+    
 }

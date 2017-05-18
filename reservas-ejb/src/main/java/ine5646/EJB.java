@@ -25,10 +25,9 @@ public class EJB implements EJBLocal {
     public void gravar(Usuario usuario){
         this.em.persist(usuario);
     }
-    
-    @Override
-    public Usuario buscar(String nome){
-        return this.em.find(Usuario.class, nome);
+        @Override
+    public Usuario buscarEmail(String email) {
+        return this.em.find(Usuario.class, email);
     }
 
     @Override
@@ -36,20 +35,30 @@ public class EJB implements EJBLocal {
         this.em.persist(viagem);
     }
     
+    @Override
     public List<ViagemOnibus> retornarListaViagens() {
         return this.em.createNamedQuery("Viagens.findAll").getResultList();
     }
 
     @Override
-    public ViagemOnibus buscar(int id) {
+    public ViagemOnibus buscarViagem(int id) {
         return this.em.find(ViagemOnibus.class, id);
     }
 
     @Override
-    public void updateReserva(int id) {        
-        ViagemOnibus e2 = this.em.find(ViagemOnibus.class, id);
-        e2.setNumReservas(e2.numReservas-1);
-        em.merge(e2);
-        
+    public void updateReserva(int id) {
+            ViagemOnibus e2 = this.em.find(ViagemOnibus.class, id);
+            e2.setNumReservas(e2.numReservas-1);
+            em.merge(e2);
     }
+
+    @Override
+    public boolean verificarViagem(int id) {
+        if(this.buscarViagem(id)!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

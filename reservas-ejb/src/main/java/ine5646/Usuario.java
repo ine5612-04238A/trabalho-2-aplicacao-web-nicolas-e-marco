@@ -15,8 +15,8 @@ import javax.persistence.Id;
 @Entity
 public class Usuario implements Serializable {
     @Id
-    private String nome;
     private String email;
+    private String nome;
     private String senha;
     private String tipoUsuario;
 

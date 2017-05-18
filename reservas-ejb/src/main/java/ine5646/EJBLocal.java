@@ -15,9 +15,10 @@ import javax.ejb.Local;
 @Local
 public interface EJBLocal {
     public void gravar(Usuario usuario);
-    public Usuario buscar(String nome);
+    public Usuario buscarEmail(String email);
     public void gravarViagem (ViagemOnibus viagem);
     public List<ViagemOnibus> retornarListaViagens();
-    public ViagemOnibus buscar(int id);
+    public ViagemOnibus buscarViagem(int id);
     public void updateReserva(int id);    
+    public boolean verificarViagem(int id);
     }
