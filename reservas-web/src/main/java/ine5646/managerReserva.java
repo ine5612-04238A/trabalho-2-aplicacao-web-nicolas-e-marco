@@ -26,6 +26,7 @@ public class managerReserva implements Serializable{
     protected EJBLocal ejb;
     
     protected int id;
+    protected String email;
     
     public EJBLocal getEjb() {
         return ejb;
@@ -35,20 +36,39 @@ public class managerReserva implements Serializable{
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
     
     public void reservar(){
         if(this.ejb.verificarViagem(id)){
-            this.ejb.updateReserva(id);
-            FacesMessage msg = new FacesMessage("Reserva feita");
+            if(this.ejb.verificarEmail(email)){
+                this.ejb.updateReserva(id);
+                this.ejb.reservaUsuario(email, id);
+                FacesMessage msg = new FacesMessage("Reserva feita");
+                FacesContext.getCurrentInstance().addMessage("erro", msg);
+            }
+              else{
+            FacesMessage msg = new FacesMessage("Email não cadastrado");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
         }
+        }
         else{
-            FacesMessage msg = new FacesMessage("Reserva não cadastrada");
+            FacesMessage msg = new FacesMessage("Reserva não cadastrada ou esgotada");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
         }
     }
     
+     public List<Integer> listarReservas() {
+            return this.ejb.retornarListaReservas(this.email);
+    
+}
 }

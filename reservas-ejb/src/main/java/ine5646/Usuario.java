@@ -6,6 +6,7 @@
 package ine5646;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,14 @@ public class Usuario implements Serializable {
     private String nome;
     private String senha;
     private String tipoUsuario;
+    protected ArrayList<Integer> codigosReserva;
 
     public Usuario(String nome, String email, String senha, String tipoUsuario) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
+        this.codigosReserva = new ArrayList();
     }
 
     public Usuario() {
@@ -32,6 +35,14 @@ public class Usuario implements Serializable {
 
     public String getNome() {
         return nome;
+    }
+
+    public ArrayList<Integer> getCodigosReserva() {
+        return codigosReserva;
+    }
+
+    public void setCodigosReserva(ArrayList<Integer> codigosReserva) {
+        this.codigosReserva = codigosReserva;
     }
 
     public void setNome(String nome) {

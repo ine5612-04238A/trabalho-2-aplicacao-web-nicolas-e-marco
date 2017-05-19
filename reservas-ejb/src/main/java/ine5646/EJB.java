@@ -55,10 +55,30 @@ public class EJB implements EJBLocal {
     @Override
     public boolean verificarViagem(int id) {
         if(this.buscarViagem(id)!=null){
+           if(this.buscarViagem(id).getNumReservas()>0){
             return true;
-        }else{
-            return false;
         }
+    } return false;
+
     }
 
+    @Override
+    public void reservaUsuario(String email, int id) {
+        Usuario u2 = this.em.find(Usuario.class, email);
+        u2.getCodigosReserva().add(id);
+        em.merge(u2);    
+    }
+
+    @Override
+    public boolean verificarEmail(String email) {
+          if(this.buscarEmail(email)!=null){
+            return true;
+    } return false;
+    }
+
+    @Override
+    public List<Integer> retornarListaReservas(String email) {
+        Usuario u2 = this.em.find(Usuario.class, email);
+        return u2.getCodigosReserva();
+    }
 }
