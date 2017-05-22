@@ -72,7 +72,13 @@ public class managerReserva implements Serializable{
     }
     
      public ArrayList<Integer> listarReservas(String email) {
-            return this.ejb.retornarListaReservas(email);
+            if(this.ejb.retornarListaReservas(email)!=null){
+                 return this.ejb.retornarListaReservas(email);
+            }else{
+                FacesMessage msg = new FacesMessage("Não possui reserva!");
+                FacesContext.getCurrentInstance().addMessage("erro", msg);
+                }return null;
     
+            
 }
 }
