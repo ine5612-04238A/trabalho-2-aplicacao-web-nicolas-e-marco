@@ -89,4 +89,15 @@ public class EJB implements EJBLocal {
         Usuario u2 = this.em.find(Usuario.class, email);
         return u2.getCodigosReserva();
     }
+
+    @Override
+    public void excluirReserva(String email, int id) {
+        Usuario u2 = this.em.find(Usuario.class, email);
+        for (int i = 0; i < u2.getCodigosReserva().size(); i++) {
+            if (u2.getCodigosReserva().get(i).compareTo(id)==0) {
+                u2.getCodigosReserva().remove(i);
+                em.merge(u2); 
+            }
+        }
+    }
 }

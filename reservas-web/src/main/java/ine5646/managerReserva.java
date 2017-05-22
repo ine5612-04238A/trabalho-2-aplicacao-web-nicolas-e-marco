@@ -81,4 +81,7 @@ public class managerReserva implements Serializable{
     
             
 }
+     public void excluirReserva(String email,int id){
+         this.ejb.excluirReserva(email, id);
+     }
 }

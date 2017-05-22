@@ -26,4 +26,5 @@ public interface EJBLocal {
     public void reservaUsuario(String email, int id);
     public boolean verificarEmail(String email);
     public boolean verificarReservaJaRealizada(String email, int id);
+    public void excluirReserva(String email, int id);
     }
