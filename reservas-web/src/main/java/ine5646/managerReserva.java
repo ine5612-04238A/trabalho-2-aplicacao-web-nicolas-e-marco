@@ -67,8 +67,8 @@ public class managerReserva implements Serializable{
         }
     }
     
-     public List<Integer> listarReservas() {
-            return this.ejb.retornarListaReservas(this.email);
+     public List<Integer> listarReservas(String email) {
+            return this.ejb.retornarListaReservas(email);
     
 }
 }
