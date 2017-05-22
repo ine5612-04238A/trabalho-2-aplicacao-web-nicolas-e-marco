@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @RequestScoped
@@ -89,8 +90,14 @@ public class Manager implements Serializable{
         if(this.ejb.buscarEmail(this.email)!=null){
             if(this.ejb.buscarEmail(this.email).getSenha().equals(this.senha) && this.ejb.buscarEmail(this.email).getEmail().equals(this.email) ) {
                 if(this.ejb.buscarEmail(this.email).getTipoUsuario()=="Funcionario"){
+                    FacesContext fc = FacesContext.getCurrentInstance();
+                    HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+                    session.setAttribute("email", this.email);
                       return "TelaFuncionario.xhtml";
               }else{
+                   FacesContext fc = FacesContext.getCurrentInstance();
+                   HttpSession session = (HttpSession) fc.getExternalContext().getSession(true);
+                   session.setAttribute("email", this.email);
                    return "TelaCliente.xhtml";
               }
         }   
