@@ -67,6 +67,7 @@ public class EJB implements EJBLocal {
     public boolean verificarReservaJaRealizada(String email, int id) {
         Usuario u2 = this.em.find(Usuario.class, email);
         return u2.getCodigosReserva().contains(id);
+        
     }
     
     @Override
