@@ -6,6 +6,7 @@
 package ine5646;
 
 import static ine5646.ViagemOnibus_.id;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -61,7 +62,13 @@ public class EJB implements EJBLocal {
     } return false;
 
     }
-
+    
+    @Override
+    public boolean verificarReservaJaRealizada(String email, int id) {
+        Usuario u2 = this.em.find(Usuario.class, email);
+        return u2.getCodigosReserva().contains(id);
+    }
+    
     @Override
     public void reservaUsuario(String email, int id) {
         Usuario u2 = this.em.find(Usuario.class, email);
@@ -77,7 +84,7 @@ public class EJB implements EJBLocal {
     }
 
     @Override
-    public List<Integer> retornarListaReservas(String email) {
+    public ArrayList<Integer> retornarListaReservas(String email) {
         Usuario u2 = this.em.find(Usuario.class, email);
         return u2.getCodigosReserva();
     }

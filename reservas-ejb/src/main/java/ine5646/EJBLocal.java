@@ -5,6 +5,7 @@
  */
 package ine5646;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -18,10 +19,11 @@ public interface EJBLocal {
     public Usuario buscarEmail(String email);
     public void gravarViagem (ViagemOnibus viagem);
     public List<ViagemOnibus> retornarListaViagens();
-    public List<Integer> retornarListaReservas(String email);
+    public ArrayList<Integer> retornarListaReservas(String email);
     public ViagemOnibus buscarViagem(int id);
     public void updateReserva(int id);    
     public boolean verificarViagem(int id);
     public void reservaUsuario(String email, int id);
     public boolean verificarEmail(String email);
+    public boolean verificarReservaJaRealizada(String email, int id);
     }

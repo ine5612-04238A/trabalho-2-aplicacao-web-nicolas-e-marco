@@ -7,6 +7,7 @@ package ine5646;
 
 import javax.ejb.EJB;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -51,12 +52,15 @@ public class managerReserva implements Serializable{
     public void reservar(){
         if(this.ejb.verificarViagem(id)){
             if(this.ejb.verificarEmail(email)){
-                this.ejb.updateReserva(id);
-                this.ejb.reservaUsuario(email, id);
-                FacesMessage msg = new FacesMessage("Reserva feita");
-                FacesContext.getCurrentInstance().addMessage("erro", msg);
-            }
-              else{
+                if (!this.ejb.verificarReservaJaRealizada(email, id)) {
+                    this.ejb.updateReserva(id);
+                    this.ejb.reservaUsuario(email, id);
+                    FacesMessage msg = new FacesMessage("Reserva feita");
+                    FacesContext.getCurrentInstance().addMessage("erro", msg);
+                } else {
+                    FacesMessage msg = new FacesMessage("Usuário já possui uma reserva nesta viagem!");        
+                    FacesContext.getCurrentInstance().addMessage("erro", msg); }
+            } else {
             FacesMessage msg = new FacesMessage("Email não cadastrado");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
         }
@@ -67,7 +71,7 @@ public class managerReserva implements Serializable{
         }
     }
     
-     public List<Integer> listarReservas(String email) {
+     public ArrayList<Integer> listarReservas(String email) {
             return this.ejb.retornarListaReservas(email);
     
 }
