@@ -82,6 +82,18 @@ public class managerReserva implements Serializable{
             
 }
      public void excluirReserva(String email,int id){
-         this.ejb.excluirReserva(email, id);
+         if(this.ejb.verificarViagem(id)){
+             if (this.ejb.verificarReservaJaRealizada(email, id)) {
+                 this.ejb.excluirReserva(email, id); 
+                 FacesMessage msg = new FacesMessage("Realizado com sucesso");
+                 FacesContext.getCurrentInstance().addMessage("erro", msg); }
+             else {
+                FacesMessage msg = new FacesMessage("Você não possui reserva nesta viagem");
+                FacesContext.getCurrentInstance().addMessage("erro", msg);
+             }
+         }else{
+            FacesMessage msg = new FacesMessage("Viagem não cadastrada");
+            FacesContext.getCurrentInstance().addMessage("erro", msg);
+        }   
      }
 }

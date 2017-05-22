@@ -7,7 +7,6 @@
     </h:head>
     <h:body>
         <h:form>
-            <p> Email da Reserva: <h:inputText value="#{email}"/></p>
             <p> Código da reserva: <h:inputText value="#{id}"/></p>
             <h:commandButton value="Excluir" action= "#{managerReserva.excluirReserva(email, id)}" />
          </h:form>

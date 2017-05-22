@@ -99,5 +99,8 @@ public class EJB implements EJBLocal {
                 em.merge(u2); 
             }
         }
+        ViagemOnibus e2 = this.em.find(ViagemOnibus.class, id);
+        e2.setNumReservas(e2.numReservas+1);
+        em.merge(e2);
     }
 }
